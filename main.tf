@@ -1,3 +1,4 @@
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project
 resource "google_project" "project" {
   name       = var.project_id
   project_id = var.project_id
