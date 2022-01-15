@@ -18,9 +18,15 @@ Please use variables so we can quickly create many different environments.
   - Capacity: 1GB
 
 ## Prerequisites
+### CLI Tools:
 ```
 $ terraform -version
 Terraform v1.1.2
 $ gcloud version
 Google Cloud SDK 330.0.0
+```
+### Provider Auth
+```
+$ gcloud auth application-default login
+$ ln -s /home/$USER/.config/gcloud/application_default_credentials.json credentials.json
 ```
