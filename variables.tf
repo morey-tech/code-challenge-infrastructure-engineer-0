@@ -9,3 +9,7 @@ variable "project_id" {
 variable "region" {
   description = "The region to host the cluster in."
 }
+
+variable "cluster_name" {
+  description = "The name of the cluster to create."
+}
