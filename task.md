@@ -16,3 +16,11 @@ Please use variables so we can quickly create many different environments.
     - email
 3. Cloud Memorystore Redis Instance
   - Capacity: 1GB
+
+## Prerequisites
+```
+$ terraform -version
+Terraform v1.1.2
+$ gcloud version
+Google Cloud SDK 330.0.0
+```
