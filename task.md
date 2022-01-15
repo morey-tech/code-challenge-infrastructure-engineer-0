@@ -4,7 +4,7 @@ Using Bash, Kubectl and Terraform; create the following configuration.
 
 Please use variables so we can quickly create many different environments.
 
-- [ ] GKE Autopilot Cluster
+- [x] GKE Autopilot Cluster
 - [ ] Nginx deployment
 - [ ] HPA for Nginx deployment to autoscale on cpu (50%)
 - [ ] Cloud SQL MySQL 8 Instance
