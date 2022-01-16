@@ -43,3 +43,23 @@ resource "kubernetes_deployment" "deployment" {
     }
   }
 }
+
+# https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/horizontal_pod_autoscaler
+resource "kubernetes_horizontal_pod_autoscaler" "hpa" {
+  metadata {
+    name = "${var.deployment_name}-hpa"
+  }
+
+  spec {
+    max_replicas = var.deployment_hpa_max_replicas
+    # default the minimum to the deployment replicas.
+    min_replicas = var.deployment_hpa_min_replicas != null ? var.deployment_hpa_min_replicas : var.deployment_replicas
+
+    target_cpu_utilization_percentage = var.deployment_hpa_target_cpu_percent
+
+    scale_target_ref {
+      kind = "Deployment"
+      name = var.deployment_name
+    }
+  }
+}

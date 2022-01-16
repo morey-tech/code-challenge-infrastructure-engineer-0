@@ -6,7 +6,7 @@ Please use variables so we can quickly create many different environments.
 
 - [x] GKE Autopilot Cluster
 - [x] Nginx deployment
-- [ ] HPA for Nginx deployment to autoscale on cpu (50%)
+- [x] HPA for Nginx deployment to autoscale on cpu (50%)
 - [ ] Cloud SQL MySQL 8 Instance
   - Machine Type: standard
   - Seed with the table db.user
