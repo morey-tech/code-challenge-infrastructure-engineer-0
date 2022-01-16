@@ -13,3 +13,15 @@ resource "google_container_cluster" "primary" {
 
   enable_autopilot = true
 }
+
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance
+resource "google_sql_database_instance" "master" {
+  name             = var.database_instance_name
+  database_version = var.database_instance_version
+  project          = google_project.project.id
+  region           = var.region
+
+  settings {
+    tier = var.database_instance_tier
+  }
+}

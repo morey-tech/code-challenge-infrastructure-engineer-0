@@ -15,6 +15,24 @@ variable "cluster_name" {
   description = "The name of the cluster to create."
 }
 
+variable database_instance_name {
+  type        = string
+  default     = "master-instance"
+  description = "The name of the database instance."
+}
+
+variable database_instance_version {
+  type        = string
+  default     = "MYSQL_8_0"
+  description = "The version of the database instance."
+}
+
+variable database_instance_tier {
+  type        = string
+  default     = "standard"
+  description = "The tier of the database instance."
+}
+
 # kubernetes
 variable "deployment_name" {
   type        = string
