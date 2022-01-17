@@ -7,13 +7,14 @@ Please use variables so we can quickly create many different environments.
 - [x] GKE Autopilot Cluster
 - [x] Nginx deployment
 - [x] HPA for Nginx deployment to autoscale on cpu (50%)
-- [ ] Cloud SQL MySQL 8 Instance
+- [x] Cloud SQL MySQL 8 Instance
   - Machine Type: standard
-  - Seed with the table db.user
-    - id
-    - first_name
-    - last_name
-    - email
+- [ ] Cloud SQL database
+- [ ] Seed database with the table `db.user`
+  - id
+  - first_name
+  - last_name
+  - email
 - [ ] Cloud Memorystore Redis Instance
   - Capacity: 1GB
 
