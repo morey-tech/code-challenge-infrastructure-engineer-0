@@ -31,3 +31,13 @@ Google Cloud SDK 330.0.0
 $ gcloud auth application-default login
 $ ln -s /home/$USER/.config/gcloud/application_default_credentials.json credentials.json
 ```
+
+### Possible Improvments
+- All the region and project vars for the different GCP resources should have the option to override based on a variable but default to the global `project` and `region` vars. For example:
+  ```
+  region = var.redis_instance_region != null ? var.redis_instance_region : var.region
+  ```
+- Split the different atomic units/resources into their own modules to make them more usable. For example, a k8s module, a database module, a cache module.
+- Use some of the modules provided by Google to better implement best practices as set out by them.
+- Add validation to the varaibles to ensure they are in the correct format.
+- A remote state to backend.
