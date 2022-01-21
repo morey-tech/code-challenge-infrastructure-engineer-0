@@ -11,7 +11,7 @@ resource "google_project" "project" {
 resource "google_project_service" "services" {
   for_each = var.project_services
 
-  project = google_project.project.id
+  project = google_project.project.name
   service = each.key
 
   timeouts {
@@ -26,7 +26,7 @@ resource "google_project_service" "services" {
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster
 resource "google_container_cluster" "primary" {
   name     = var.cluster_name
-  project  = google_project.project.id
+  project  = google_project.project.name
   location = var.region
 
   enable_autopilot = true
@@ -36,7 +36,7 @@ resource "google_container_cluster" "primary" {
 resource "google_sql_database_instance" "master" {
   name             = var.database_instance_name
   database_version = var.database_instance_version
-  project          = google_project.project.id
+  project          = google_project.project.name
   region           = var.region
 
   settings {
@@ -54,7 +54,7 @@ resource "google_sql_database_instance" "master" {
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database
 resource "google_sql_database" "database" {
   name     = var.database_name
-  project  = google_project.project.id
+  project  = google_project.project.name
   instance = google_sql_database_instance.master.name
 }
 
@@ -80,7 +80,7 @@ resource "google_sql_user" "user" {
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/redis_instance#example-usage---redis-instance-basic
 resource "google_redis_instance" "cache" {
   name     = var.redis_instance_name
-  project  = google_project.project.id
+  project  = google_project.project.name
   region   = var.region
 
   memory_size_gb = var.redis_instance_size
