@@ -5,6 +5,8 @@ resource "google_project" "project" {
   org_id     = var.org_id
 
   billing_account = var.billing_account
+
+  skip_delete = true  # resource can be deleted without deleting the Project
 }
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_service
