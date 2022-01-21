@@ -23,6 +23,13 @@ resource "google_sql_database_instance" "master" {
 
   settings {
     tier = var.database_instance_tier
+    ip_configuration {
+    ipv4_enabled = true
+    authorized_networks {
+        name = "allow_network"
+        value = var.database_instance_allowed_network
+      }
+    }
   }
 }
 
@@ -31,6 +38,25 @@ resource "google_sql_database" "database" {
   name     = var.database_name
   project  = google_project.project.id
   instance = google_sql_database_instance.master.name
+}
+
+resource "google_sql_user" "user" {
+  name     = var.database_credentials.user
+  instance = google_sql_database_instance.master.name
+  password = var.database_credentials.password
+  depends_on = [
+    google_sql_database.database
+  ]
+
+  # Use a provisioner to seed the database with a schema from a file. This requires
+  # that the host running terraform has `psql` installed.
+  # Note: if the schema is deleted but the user exists Terraform will not re-apply the schema.
+  # Potential solution, replace the resource:
+  #   terraform apply -replace="google_sql_user.user"
+  # https://www.terraform.io/cli/commands/plan#replace-address
+  provisioner "local-exec" {
+    command = "PGPASSWORD=${google_sql_user.user.password} psql -U ${google_sql_user.user.name} -h ${google_sql_database_instance.master.public_ip_address} -f ${var.database_seed_file} ${var.database_name}"
+  }
 }
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/redis_instance#example-usage---redis-instance-basic

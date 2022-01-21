@@ -10,7 +10,7 @@ Please use variables so we can quickly create many different environments.
 - [x] Cloud SQL MySQL 8 Instance
   - Machine Type: standard
 - [x] Cloud SQL database
-- [ ] Seed database with the table `db.user`
+- [x] Seed database with the table `db.user`
   - id
   - first_name
   - last_name

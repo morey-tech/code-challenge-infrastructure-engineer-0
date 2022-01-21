@@ -33,10 +33,30 @@ variable database_instance_tier {
   description = "The tier of the database instance."
 }
 
+variable database_instance_allowed_network {
+  type        = string
+  default     = "standard"
+  description = "A CIDR notation IPv4 or IPv6 address that is allowed to access the database instance."
+}
+
 variable database_name {
   type        = string
   default     = "database"
   description = "The name of the database instance."
+}
+
+variable database_seed_file {
+  type        = string
+  default     = "schema.sql"
+  description = "The name of the file to seed the database."
+}
+
+variable database_credentials {
+  type        = object({
+    user      = string
+    password  = string
+  })
+  description = "The name of the file to seed the database."
 }
 
 variable redis_instance_name {
