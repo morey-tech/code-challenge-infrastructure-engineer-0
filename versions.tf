@@ -2,7 +2,10 @@ terraform {
   required_providers {
     google = {
       source  = "hashicorp/google"
-      version = "4.6.0"
+      # https://github.com/hashicorp/terraform-provider-google/issues/10782
+      # Due to this issue, in order to use autopilot on the google_container_cluster
+      # the google provider version must be `4.3.0`.
+      version = "4.3.0"
     }
 
     kubernetes = {
