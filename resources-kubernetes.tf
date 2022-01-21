@@ -1,3 +1,4 @@
+# https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/deployment
 resource "kubernetes_deployment" "deployment" {
   metadata {
     name = var.deployment_name
@@ -38,9 +39,30 @@ resource "kubernetes_deployment" "deployment" {
               memory = var.deployment_mem_requests
             }
           }
+          security_context {
+            allow_privilege_escalation = false
+            privileged                 = false
+            read_only_root_filesystem  = false
+            run_as_non_root            = false
+            capabilities {
+              add  = []
+              drop = [
+                "NET_RAW",
+              ]
+            }
+          }
         }
       }
     }
+  }
+
+  lifecycle {    
+    ignore_changes = [
+      # Ignore changes to tags, e.g. because a management agent
+      # updates these based on some ruleset managed elsewhere.
+      metadata[0].annotations["autopilot.gke.io/resource-adjustment"],
+      spec[0].template[0].spec[0].container[0].resources,
+    ]
   }
 }
 

@@ -47,7 +47,7 @@ variable database_instance_version {
 
 variable database_instance_tier {
   type        = string
-  default     = "STANDARD"
+  default     = "db-f1-micro"
   description = "The tier of the database instance."
 }
 
