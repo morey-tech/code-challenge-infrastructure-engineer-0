@@ -1,0 +1,12 @@
+org_id = "123456789000"                   # your GCP org ID
+billing_account = "XXXXXX-XXXXXX-XXXXXX"  # the billing account id for the project
+project_id = "development"                # the name of project to create and hold resources 
+region = "northamerica-northeast2"        # toronto
+cluster_name = "my-company"          # what to name the cluster
+
+# Get your IP adddress with: `echo "$(curl -s ifconfig.me)/24"`
+database_instance_allowed_network = "0.0.0.0/0"
+database_credentials = {
+  user = "admin"
+  password = "myStrongPassword$"  # ideally set a runtime in pipeline env.
+}
