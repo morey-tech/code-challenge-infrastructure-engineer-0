@@ -1,21 +1,26 @@
 # google
 variable "org_id" {
+  type        = string
   description = "The organization ID to create projects in."
 }
 
 variable "project_id" {
+  type        = string
   description = "The project ID to host the cluster in."
 }
 
 variable "billing_account" {
+  type        = string
   description = "The project ID to host the cluster in."
 }
 
 variable "region" {
+  type        = string
   description = "The region to host the cluster in."
 }
 
 variable "cluster_name" {
+  type        = string
   description = "The name of the cluster to create."
 }
 
