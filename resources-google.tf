@@ -3,8 +3,24 @@ resource "google_project" "project" {
   name       = var.project_id
   project_id = var.project_id
   org_id     = var.org_id
-  
+
   billing_account = var.billing_account
+}
+
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_service
+resource "google_project_service" "services" {
+  for_each = var.project_services
+
+  project = google_project.project.id
+  service = each.key
+
+  timeouts {
+    create = "30m"
+    update = "40m"
+  }
+
+  # an error will be generated if any enabled services depend on this service when destroying it.
+  disable_dependent_services = false 
 }
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster

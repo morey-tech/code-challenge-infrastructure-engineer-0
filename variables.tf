@@ -9,6 +9,15 @@ variable "project_id" {
   description = "The project ID to host the cluster in."
 }
 
+variable "project_services" {
+  type        = set(string)
+  description = "The project ID to host the cluster in."
+  default     = [
+    "container.googleapis.com",
+    "redis.googleapis.com",
+  ]
+}
+
 variable "billing_account" {
   type        = string
   description = "The project ID to host the cluster in."
