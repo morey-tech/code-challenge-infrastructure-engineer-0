@@ -33,6 +33,11 @@ variable database_instance_tier {
   description = "The tier of the database instance."
 }
 
+variable database_name {
+  type        = string
+  default     = "database"
+  description = "The name of the database instance."
+}
 # kubernetes
 variable "deployment_name" {
   type        = string

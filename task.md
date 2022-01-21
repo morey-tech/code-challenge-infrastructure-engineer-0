@@ -9,7 +9,7 @@ Please use variables so we can quickly create many different environments.
 - [x] HPA for Nginx deployment to autoscale on cpu (50%)
 - [x] Cloud SQL MySQL 8 Instance
   - Machine Type: standard
-- [ ] Cloud SQL database
+- [x] Cloud SQL database
 - [ ] Seed database with the table `db.user`
   - id
   - first_name

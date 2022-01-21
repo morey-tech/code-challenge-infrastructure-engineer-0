@@ -25,3 +25,10 @@ resource "google_sql_database_instance" "master" {
     tier = var.database_instance_tier
   }
 }
+
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database
+resource "google_sql_database" "database" {
+  name     = var.database_name
+  project  = google_project.project.id
+  instance = google_sql_database_instance.master.name
+}
