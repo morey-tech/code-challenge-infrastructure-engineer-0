@@ -32,3 +32,13 @@ resource "google_sql_database" "database" {
   project  = google_project.project.id
   instance = google_sql_database_instance.master.name
 }
+
+# https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/redis_instance#example-usage---redis-instance-basic
+resource "google_redis_instance" "cache" {
+  name     = var.redis_instance_name
+  project  = google_project.project.id
+  region   = var.region
+
+  memory_size_gb = var.redis_instance_size
+  tier           = var.redis_instance_tier
+}

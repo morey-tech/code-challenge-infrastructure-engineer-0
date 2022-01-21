@@ -15,7 +15,7 @@ Please use variables so we can quickly create many different environments.
   - first_name
   - last_name
   - email
-- [ ] Cloud Memorystore Redis Instance
+- [x] Cloud Memorystore Redis Instance
   - Capacity: 1GB
 
 ## Prerequisites

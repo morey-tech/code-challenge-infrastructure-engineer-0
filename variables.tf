@@ -38,6 +38,25 @@ variable database_name {
   default     = "database"
   description = "The name of the database instance."
 }
+
+variable redis_instance_name {
+  type        = string
+  default     = "memory-cache"
+  description = "The name of the redis instance."
+}
+
+variable redis_instance_tier {
+  type        = string
+  default     = "STANDARD_HA"  # Possible values are `BASIC` and `STANDARD_HA`
+  description = "The tier of the redis instance."
+}
+
+variable redis_instance_size {
+  type        = number
+  default     = 1
+  description = "The size of the redis instance."
+}
+
 # kubernetes
 variable "deployment_name" {
   type        = string
