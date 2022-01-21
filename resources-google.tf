@@ -30,6 +30,10 @@ resource "google_container_cluster" "primary" {
   location = var.region
 
   enable_autopilot = true
+
+  vertical_pod_autoscaling {
+    enabled = true
+  }
 }
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance
