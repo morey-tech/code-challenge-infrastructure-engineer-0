@@ -60,6 +60,8 @@ resource "google_sql_database" "database" {
   name     = var.database_name
   project  = google_project.project.name
   instance = google_sql_database_instance.master.name
+
+  collation = var.database_collation
 }
 
 resource "google_sql_user" "user" {

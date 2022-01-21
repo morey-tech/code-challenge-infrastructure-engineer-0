@@ -60,7 +60,13 @@ variable database_instance_allowed_network {
 variable database_name {
   type        = string
   default     = "database"
-  description = "The name of the database instance."
+  description = "The name of the database."
+}
+
+variable database_collation {
+  type        = string
+  default     = "utf8_unicode_ci"
+  description = "The collation of the database."
 }
 
 variable database_seed_file {
