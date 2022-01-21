@@ -41,3 +41,6 @@ $ ln -s /home/$USER/.config/gcloud/application_default_credentials.json credenti
 - Use some of the modules provided by Google to better implement best practices as set out by them.
 - Add validation to the varaibles to ensure they are in the correct format.
 - A remote state to backend.
+- Use templates and variables to generate the `schema.sql` file.
+- Improve HA on the database and redis instances.
+- Manage the VPCs.
